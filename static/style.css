@@ -1,0 +1,166 @@
+/* CSS-змінні для швидкого перемикання теми */
+:root {
+    --bg-main: #1e1e1e;
+    --bg-sidebar: #2a2a2a;
+    --text: #fff;
+    --border: #444;
+    --input-bg: #333;
+    --input-hover: #444;
+}
+
+body.light {
+    --bg-main: #fff;
+    --bg-sidebar: #f8f9fa;
+    --text: #212529;
+    --border: #dee2e6;
+    --input-bg: #e9ecef;
+    --input-hover: #d3d9df;
+}
+
+/* Базові налаштування та структура */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    background: var(--bg-main);
+    color: var(--text);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+#canvas-container { margin-left: 280px; height: 100vh; }
+
+#sidebar {
+    width: 280px;
+    position: fixed;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    z-index: 10;
+    transition: 0.3s;
+}
+
+/* Тексти та розділювачі */
+h2, h3 { margin-top: 0; }
+label { font-weight: bold; font-size: 0.9em; margin-bottom: 8px; }
+hr { border: 0; height: 1px; background: var(--border); margin: 20px 0; }
+
+.control-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Спільні стилі для полів, повзунків та кнопок */
+.styled-select, input[type="range"], button {
+    width: 100%;
+    cursor: pointer;
+}
+
+.styled-select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text);
+}
+
+/* Зона завантаження JSON файлу */
+input[type="file"] { display: none; }
+
+.custom-file-upload {
+    display: block;
+    padding: 10px;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.upload-highlight {
+    padding: 16px 10px;
+    font-size: 15px;
+    border: 2px dashed #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.upload-highlight:hover {
+    background: rgba(76, 175, 80, 0.25);
+    border-color: #45a049;
+    transform: translateY(-1px);
+}
+
+/* Статус */
+#status {
+    margin: 5px 0 15px;
+    padding: 10px;
+    background: rgba(128, 128, 128, 0.15);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Кнопки */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+    margin-bottom: 8px;
+}
+button:active { transform: scale(0.98); }
+
+/* Сітка емоцій (2 колонки) */
+.emotions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.emotions-grid button { padding: 8px 5px; font-size: 13px; margin: 0; }
+
+/* Кольори окремих кнопок */
+.emotion-btn { background: #4CAF50; color: #fff; }
+.emotion-btn:hover { background: #45a049; }
+
+.reset-btn { background: #d9534f; color: #fff; margin-top: 5px; }
+.reset-btn:hover { background: #c9302c; }
+
+.download-btn { background: #008CBA; color: #fff; }
+.download-btn:hover { background: #007bb5; }
+
+/* --- СТИЛІ ДЛЯ ХРЕСТИКА І ФАЙЛУ --- */
+.file-upload-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.file-upload-wrapper .custom-file-upload {
+    flex-grow: 1; /* Кнопка файлу займає весь вільний простір */
+    margin-bottom: 0;
+}
+
+#clearJsonBtn {
+    display: none; /* Сховано, поки нема файлу */
+    width: 45px;
+    margin: 0;
+    background-color: #d9534f;
+    color: white;
+    padding: 0;
+    font-size: 14px;
+}
+
+#clearJsonBtn:hover {
+    background-color: #c9302c;
+}
